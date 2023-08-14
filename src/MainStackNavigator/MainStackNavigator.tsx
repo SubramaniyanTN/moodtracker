@@ -9,7 +9,7 @@ const MainStackNavigator=()=>{
 
     return(
         <>
-        <StackNavigator.Navigator initialRouteName="login" >
+        <StackNavigator.Navigator screenOptions={{headerShown:false}} initialRouteName="login" >
             <StackNavigator.Screen name="login" component={Login}  />
         </StackNavigator.Navigator>
         </>

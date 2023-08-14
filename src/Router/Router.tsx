@@ -3,7 +3,6 @@ import BottomTabNavigator from '../BottomTabNavigator/BottomTabNavigator';
 import MainStackNavigator from '../MainStackNavigator/MainStackNavigator';
 import {useContext} from 'react'
 import { AuthContext, AuthContextType } from '../Context/AuthContextWrapper';
-// import {useAuthContext } from '../Context/AuthContextWrapper';
 
 const Router = () => {
     const {isAuthenticated}=useContext<AuthContextType>(AuthContext)
