@@ -29,6 +29,10 @@ const SignUp = () => {
           style={styles.textInputCommonStyle}
           placeholder="Enter your Last Name"
         />
+        <TextInput
+          style={styles.textInputCommonStyle}
+          placeholder="Enter your Email Id"
+        />
         <View style={styles.passwordCommonViewStyle}>
           <TextInput
             style={styles.passwordTypeInput}
