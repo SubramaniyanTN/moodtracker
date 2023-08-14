@@ -5,19 +5,19 @@
  * @format
  */
 
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import BottomTabNavigator from './src/BottomTabNavigator/BottomTabNavigator';
 import { SafeAreaView, StyleSheet } from 'react-native';
+import AuthContextWrapper from './src/Context/AuthContextWrapper'
+import Router from './src/Router/Router';
 
 
 function App() {
   return (
     <>
     <SafeAreaView style={styles.mainContainer} >
-    <NavigationContainer>
-      <BottomTabNavigator/>
-    </NavigationContainer>
+    <AuthContextWrapper>
+    <Router/>
+    </AuthContextWrapper>
     </SafeAreaView>
     </>
   );

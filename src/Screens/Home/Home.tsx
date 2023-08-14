@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     <>
       <SafeAreaView style={styles.styleSheetStyle}>
         <View style={styles.mainContainerHome}>
-          <Text style={styles.titleStyle}>How are you right now ???</Text>
+          <Text style={styles.titleStyle}>How are you right now ?</Text>
           <View style={styles.moodOptionsEntireContainer}>
             {moodOptions.map(moodOption => {
               return (
