@@ -4,8 +4,14 @@ import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import EyeClosed from '../../assets/Images/eye-closed.svg';
 import EyeOpened from '../../assets/Images/eye.svg';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { AuthStackNavigatorType } from '../../MainStackNavigator/MainStackNavigator';
+
+type Props=StackNavigationProp<AuthStackNavigatorType , 'signUp'>
 
 const SignUp = () => {
+  const navigation=useNavigation<Props>()
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
@@ -54,7 +60,7 @@ const SignUp = () => {
           </Pressable>
         </View>
         <View style={styles.bottomSignUpButton} >
-          <Pressable style={styles.SignUpButtonPressable} ><Text style={styles.SignUpButtonText} >Sign up</Text></Pressable>
+          <Pressable style={styles.SignUpButtonPressable} onPress={()=>navigation.navigate("otpVerification",{emailId:"subramaniyanmarimuth115@gmail.com"})} ><Text style={styles.SignUpButtonText} >Sign up</Text></Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -84,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color:"#454C73"
   },
   textInputCommonStyle: {
     borderColor: '#000',
