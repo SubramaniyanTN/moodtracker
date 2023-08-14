@@ -48,7 +48,7 @@ const styles=StyleSheet.create({
         padding:2,
         display:"flex",
         alignItems:"center",
-        gap:10
+        gap:15
     },
     loginHeaderContainer:{
         width:"100%",
