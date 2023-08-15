@@ -1,7 +1,14 @@
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AuthStackNavigatorType } from '../../MainStackNavigator/MainStackNavigator';
+import { useNavigation } from '@react-navigation/native';
+
+type Props=StackNavigationProp<AuthStackNavigatorType,'forgotPassword'>
 
 const ForgotPassword = () => {
+
+  const navigation=useNavigation<Props>()
   return (
     <>
       <SafeAreaView style={styles.SafeAreaViewStyle}>
@@ -11,7 +18,7 @@ const ForgotPassword = () => {
             style={styles.textInputCommonStyle}
             placeholder="Enter your email Id"
           />
-          <Pressable style={styles.sentOTPPressable} >
+          <Pressable style={styles.sentOTPPressable} onPress={()=>navigation.navigate("forgotPasswordOTPVerification",{emailID:"subramaniyanmarimuth115@gmail.com"})} >
             <Text style={styles.sentOTPButton} >
                 Sent OTP
             </Text>

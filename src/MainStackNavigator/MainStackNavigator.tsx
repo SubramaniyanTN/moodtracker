@@ -4,6 +4,7 @@ import SignUp from "../Screens/StackScreens/SignUp";
 import ForgotPassword from "../Screens/StackScreens/ForgotPassword";
 import { Text } from "react-native";
 import OTPVerification from "../Screens/StackScreens/OTPVerification";
+import ForgotPasswordVerification from "../Screens/StackScreens/ForgotPasswordVerification";
 
 export type AuthStackNavigatorType={
     login:undefined;
@@ -12,6 +13,9 @@ export type AuthStackNavigatorType={
     otpVerification:{
         emailId:string
     };
+    forgotPasswordOTPVerification:{
+        emailID:string;
+    }
 }
 const MainStackNavigator=()=>{
     const StackNavigator=createStackNavigator<AuthStackNavigatorType>()
@@ -30,6 +34,9 @@ const MainStackNavigator=()=>{
             }}  />
             <StackNavigator.Screen name="otpVerification" component={OTPVerification} options={{
                 headerTitle:"OTP Verification"
+            }}  />
+            <StackNavigator.Screen name="forgotPasswordOTPVerification" component={ForgotPasswordVerification} options={{
+                headerTitle:"Change your Password"
             }}  />
         </StackNavigator.Navigator>
         </>
