@@ -5,9 +5,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { AuthStackNavigatorType } from '../../MainStackNavigator/MainStackNavigator';
 
 const OTPVerification = () => {
-  const route=useRoute<RouteProp<AuthStackNavigatorType,'otpVerification'>>()
-  const {emailId}=route.params
-  console.log(route)
+  const {emailId}=useRoute<RouteProp<AuthStackNavigatorType,'otpVerification'>>().params
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
       <View style={styles.OTPVerificationContainer}>

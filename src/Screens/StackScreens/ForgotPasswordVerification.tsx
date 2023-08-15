@@ -10,17 +10,16 @@ const ForgotPasswordVerification = () => {
   const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
   const [showReEnteredPassword, setShowReEnteredPassword] =
     useState<boolean>(false);
-  const route =
+  const { emailID } =
     useRoute<
       RouteProp<AuthStackNavigatorType, 'forgotPasswordOTPVerification'>
-    >();
+    >().params;
   const handleShowPassword = () => {
     setShowNewPassword(prev => !prev);
   };
   const handleShowReEnteredPassword = () => {
     setShowReEnteredPassword(prev => !prev);
   };
-  const { emailID } = route.params;
   return (
     <SafeAreaView style={styles.safeAreaViewStyles}>
       <View style={styles.mainBoxContainer}>
