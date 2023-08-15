@@ -5,7 +5,8 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { AuthStackNavigatorType } from '../../MainStackNavigator/MainStackNavigator';
 
 const OTPVerification = () => {
-  const {emailId}=useRoute<RouteProp<AuthStackNavigatorType,'otpVerification'>>().params
+  const { emailId } =
+    useRoute<RouteProp<AuthStackNavigatorType, 'otpVerification'>>().params;
   return (
     <SafeAreaView style={styles.SafeAreaViewStyle}>
       <View style={styles.OTPVerificationContainer}>
@@ -14,8 +15,12 @@ const OTPVerification = () => {
           style={styles.textInputCommonStyle}
           placeholder="Enter OTP"
         />
-        <View style={styles.bottomOTPVerificationButton} >
-          <Pressable style={styles.OTPVerificationButtonPressable} ><Text style={styles.OTPVerificationButtonText} >Click to Verify</Text></Pressable>
+        <View style={styles.bottomOTPVerificationButton}>
+          <Pressable style={styles.OTPVerificationButtonPressable}>
+            <Text style={styles.OTPVerificationButtonText}>
+              Click to Verify
+            </Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -45,14 +50,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    color:"#454C73"
+    color: '#454C73',
   },
-  otpContent:{
-    width:"80%",
-    padding:5,
+  otpContent: {
+    width: '80%',
+    padding: 5,
     fontSize: 13,
     fontWeight: 'bold',
-    textAlign:"center"
+    textAlign: 'center',
   },
   textInputCommonStyle: {
     borderColor: '#000',
@@ -75,19 +80,19 @@ const styles = StyleSheet.create({
     width: '90%',
     height: '100%',
   },
-  bottomOTPVerificationButton:{
-    width:"90%",
-    display:"flex",
-    alignItems:"center"
+  bottomOTPVerificationButton: {
+    width: '90%',
+    display: 'flex',
+    alignItems: 'center',
   },
-  OTPVerificationButtonPressable:{
-    backgroundColor:"#454C73",
-    width:"50%",
-    padding:10,
+  OTPVerificationButtonPressable: {
+    backgroundColor: '#454C73',
+    width: '50%',
+    padding: 10,
   },
-  OTPVerificationButtonText:{
-    color:"#fff",
-    textAlign:"center",
-    fontWeight:"600"
-  }
+  OTPVerificationButtonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '600',
+  },
 });
