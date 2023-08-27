@@ -10,7 +10,7 @@ const Router = () => {
   return (
     <>
       <NavigationContainer>
-        {isAuthenticated ? <BottomTabNavigator /> : <DrawerNavigator />}
+        {isAuthenticated ? <DrawerNavigator /> : <MainStackNavigator />}
       </NavigationContainer>
     </>
   );

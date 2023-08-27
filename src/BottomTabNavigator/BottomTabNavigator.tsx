@@ -13,7 +13,8 @@ const BottomTab=createBottomTabNavigator<{
 }>();
 const BottomTabNavigator=()=>{
     return(
-        <BottomTab.Navigator initialRouteName="Home" screenOptions={(props)=>{
+        <BottomTab.Navigator initialRouteName="Home" 
+        screenOptions={(props)=>{
             if(props.route.name==="Home"){
                 return {
                     tabBarIcon:()=><HomeIcon />,
@@ -27,16 +28,17 @@ const BottomTabNavigator=()=>{
             }else if(props.route.name==="Analytics"){
                 return {
                     tabBarIcon:()=><AnalyticsIcon />,
-                    tabBarHideOnKeyboard:true
+                    tabBarHideOnKeyboard:true,
                 }
             }
             return {
 
             }
-        }} >
-            <BottomTab.Screen name="Home"  component={Home} />
-            <BottomTab.Screen name="History" component={History} />
-            <BottomTab.Screen name="Analytics" component={Analytics} />
+        }} 
+        >
+            <BottomTab.Screen name="Home" options={{headerShown:false}} component={Home} />
+            <BottomTab.Screen name="History" options={{headerShown:false}} component={History} />
+            <BottomTab.Screen name="Analytics" options={{headerShown:false}} component={Analytics} />
         </BottomTab.Navigator>
     )
 }
