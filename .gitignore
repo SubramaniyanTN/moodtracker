@@ -64,3 +64,6 @@ yarn-error.log
 
 # testing
 /coverage
+#this is the connection for firebase
+android/app/src/debug/google-services.json
+
