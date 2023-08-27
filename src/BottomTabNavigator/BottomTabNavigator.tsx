@@ -25,14 +25,11 @@ const BottomTabNavigator=()=>{
                     tabBarIcon:()=><HistoryIcon />,
                     tabBarHideOnKeyboard:true
                 }
-            }else if(props.route.name==="Analytics"){
+            }else{
                 return {
                     tabBarIcon:()=><AnalyticsIcon />,
                     tabBarHideOnKeyboard:true,
                 }
-            }
-            return {
-
             }
         }} 
         >
