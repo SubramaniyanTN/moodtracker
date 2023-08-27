@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Pressable, StyleSheet, Text, View ,TextInput, Button} from 'react-native';
+import { Pressable, StyleSheet, Text, View, TextInput } from 'react-native';
 import { MoodOptionsType, moodOptions } from '../../Utils/MoodOptions';
 import { useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -45,9 +45,18 @@ const Home: React.FC = () => {
               );
             })}
           </View>
-          <TextInput style={styles.captionTextInput} placeholder='Caption' />
-          <TextInput style={styles.descriptionTextInput} textAlignVertical='top' multiline={true} placeholder='What Happened ?' />
-          <Pressable onPress={ImagePickerComponent} style={styles.imagePickerButton} ><Text style={styles.imagePickerText} >Click to add Images</Text></Pressable>
+          <TextInput style={styles.captionTextInput} placeholder="Caption" />
+          <TextInput
+            style={styles.descriptionTextInput}
+            textAlignVertical="top"
+            multiline={true}
+            placeholder="What Happened ?"
+          />
+          <Pressable
+            onPress={ImagePickerComponent}
+            style={styles.imagePickerButton}>
+            <Text style={styles.imagePickerText}>Click to add Images</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </>
@@ -109,29 +118,29 @@ const styles = StyleSheet.create({
     fontSize: 10,
     textAlign: 'center',
   },
-  captionTextInput:{
-    width:"90%",
-    borderColor:"#000",
+  captionTextInput: {
+    width: '90%',
+    borderColor: '#000',
     borderRadius: 3,
     borderWidth: 1,
-    alignSelf:"center"
+    alignSelf: 'center',
   },
-  descriptionTextInput:{
-    width:"90%",
-    height:100,
-    borderColor:"#000",
+  descriptionTextInput: {
+    width: '90%',
+    height: 100,
+    borderColor: '#000',
     borderRadius: 3,
     borderWidth: 1,
-    alignSelf:"center"
+    alignSelf: 'center',
   },
-  imagePickerButton:{
-    backgroundColor:"#454C73",
-    alignSelf:"center"
+  imagePickerButton: {
+    backgroundColor: '#454C73',
+    alignSelf: 'center',
   },
-  imagePickerText:{
-    color:"#FFFFFF",
-    padding:4
-  }
+  imagePickerText: {
+    color: '#FFFFFF',
+    padding: 4,
+  },
 });
 
 export default Home;
