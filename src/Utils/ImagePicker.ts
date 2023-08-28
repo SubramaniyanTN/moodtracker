@@ -46,7 +46,6 @@ export const ImagePickerComponent = async (): Promise<Asset[] | undefined> => {
 };
 
 export const ImageCameraClickComponent = async (
-  cameraType: CameraType,
 ): Promise<Asset[] | undefined> => {
   console.log('TRIGGERED');
   try {
@@ -70,7 +69,6 @@ export const ImageCameraClickComponent = async (
       const imageCameraResponse: ImagePickerResponse = await launchCamera({
         mediaType: 'photo',
         saveToPhotos: true,
-        cameraType: cameraType,
       });
       if (imageCameraResponse.didCancel) {
         ToastAndroid.show('Camera cancelled', ToastAndroid.SHORT);
