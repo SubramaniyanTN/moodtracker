@@ -16,7 +16,7 @@ import {
   ImageCameraClickComponent,
   ImagePickerComponent,
 } from '../../Utils/ImagePicker';
-import storage from '@react-native-firebase/storage';
+import storage, { FirebaseStorageTypes } from '@react-native-firebase/storage';
 
 const Home: React.FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -26,8 +26,9 @@ const Home: React.FC = () => {
     setSelectedMood(selectedMood);
   }, []);
 
-  const imageUpload = async () => {
+  const imageUploadThroughGallery = async () => {
     try {
+      setModalVisible(false);
       const response = await ImagePickerComponent();
       if (!response || !response[0].uri) return;
       const imageRef = storage().ref(
@@ -35,13 +36,31 @@ const Home: React.FC = () => {
       );
       const imageUploadResponse = await imageRef.putFile(response[0].uri);
       const imageDownloadURL = await imageRef.getDownloadURL();
-      console.log(imageUploadResponse);
       setImage(imageDownloadURL);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(image);
+  const imageUploadThroughCamera = async () => {
+    try {
+      setModalVisible(false);
+      const response = await ImageCameraClickComponent();
+      if (!response || !response[0].uri) return;
+      const imageRef = storage().ref(
+        `user/${Date.now()}-${response[0].fileName}`,
+      );
+      const imageUploadResponse: FirebaseStorageTypes.TaskSnapshot =
+        await imageRef.putFile(response[0].uri);
+      if (imageUploadResponse.state === 'success') {
+        const imageDownloadURL = await imageRef.getDownloadURL();
+        setImage(imageDownloadURL);
+      }else{
+        ToastAndroid.show("Error in Uploading Image , please try again later",ToastAndroid.SHORT)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useFocusEffect(
     React.useCallback(() => {
       return () => {
@@ -108,10 +127,10 @@ const Home: React.FC = () => {
                   style={styles.modalCloseButton}>
                   <Text style={styles.closeX}>X</Text>
                 </Pressable>
-                <Pressable onPress={ImagePickerComponent}>
+                <Pressable onPress={imageUploadThroughGallery}>
                   <Text style={styles.modalContentText}>Gallery</Text>
                 </Pressable>
-                <Pressable onPress={ImageCameraClickComponent}>
+                <Pressable onPress={imageUploadThroughCamera}>
                   <Text style={styles.modalContentText}>Camera</Text>
                 </Pressable>
               </View>
@@ -139,8 +158,8 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 5,
     gap: 20,
-    paddingTop:30,
-    paddingBottom:30
+    paddingTop: 30,
+    paddingBottom: 30,
   },
   moodOptionsEntireContainer: {
     display: 'flex',
