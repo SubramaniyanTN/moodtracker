@@ -87,10 +87,6 @@ export const ImageCameraClickComponent = async (
             );
             break;
           case 'others':
-            console.log(
-              'imageCameraResponse.errorMessage',
-              imageCameraResponse.errorMessage,
-            );
             ToastAndroid.show(
               'Something went wrong , please try again later',
               ToastAndroid.SHORT,
