@@ -10,7 +10,7 @@ import {
 import { MoodOptionsType, moodOptions } from '../../Utils/MoodOptions';
 import { useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ImagePickerComponent } from '../../Utils/ImagePicker';
+import { ImageCameraClickComponent, ImagePickerComponent } from '../../Utils/ImagePicker';
 import storage from '@react-native-firebase/storage';
 import { err } from 'react-native-svg/lib/typescript/xml';
 
@@ -81,7 +81,7 @@ const Home: React.FC = () => {
            <Image source={{ uri: image }} width={150} height={150}/>
           </View>
            }
-          <Pressable onPress={imageUpload} style={styles.imagePickerButton}>
+          <Pressable onPress={()=>ImageCameraClickComponent("back")} style={styles.imagePickerButton}>
             <Text style={styles.imagePickerText}>Click to add Images</Text>
           </Pressable>
         </View>
