@@ -7,7 +7,7 @@ export const ImagePickerComponent = async ():Promise<Asset[] | undefined>=> {
     const imageResponse: ImagePickerResponse =
     await launchImageLibrary({
       mediaType: 'photo',
-      includeBase64: true,
+      includeBase64: false,
       selectionLimit: 1,
     });
   if (imageResponse.didCancel) {
@@ -33,7 +33,6 @@ export const ImagePickerComponent = async ():Promise<Asset[] | undefined>=> {
         break;
     }
   } else if (imageResponse.assets) {
-    console.log(imageResponse.assets)
     return imageResponse.assets;
   }
  } catch (error) {

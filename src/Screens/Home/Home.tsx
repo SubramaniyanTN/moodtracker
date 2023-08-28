@@ -1,16 +1,40 @@
 import React, { useCallback, useState } from 'react';
-import { Pressable, StyleSheet, Text, View, TextInput } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Image,
+} from 'react-native';
 import { MoodOptionsType, moodOptions } from '../../Utils/MoodOptions';
 import { useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ImagePickerComponent } from '../../Utils/ImagePicker';
+import storage from '@react-native-firebase/storage';
+import { err } from 'react-native-svg/lib/typescript/xml';
 
 const Home: React.FC = () => {
+  const [image, setImage] = useState<string>();
   const [selectedMood, setSelectedMood] = useState<MoodOptionsType>();
   const handleSelectedMood = useCallback((selectedMood: MoodOptionsType) => {
     setSelectedMood(selectedMood);
   }, []);
 
+  const imageUpload = async () => {
+    try {
+      const response = await ImagePickerComponent();
+    if(!response || !response[0].uri)return
+    const imageRef=storage().ref(`user/${Date.now()}-${response[0].fileName}`)
+    const imageUploadResponse=await imageRef.putFile(response[0].uri)
+    const imageDownloadURL=await imageRef.getDownloadURL()
+    console.log(imageUploadResponse)
+    setImage(imageDownloadURL)
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  console.log(image)
   useFocusEffect(
     React.useCallback(() => {
       return () => {
@@ -52,9 +76,12 @@ const Home: React.FC = () => {
             multiline={true}
             placeholder="What Happened ?"
           />
-          <Pressable
-            onPress={ImagePickerComponent}
-            style={styles.imagePickerButton}>
+          {image &&
+          <View style={styles.imageViewStyle} >
+           <Image source={{ uri: image }} width={150} height={150}/>
+          </View>
+           }
+          <Pressable onPress={imageUpload} style={styles.imagePickerButton}>
             <Text style={styles.imagePickerText}>Click to add Images</Text>
           </Pressable>
         </View>
@@ -141,6 +168,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     padding: 4,
   },
+  imageViewStyle:{
+    width:"100%",
+    display:"flex",
+    alignItems:"center"
+  }
 });
 
 export default Home;
